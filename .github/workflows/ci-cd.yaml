@@ -40,6 +40,9 @@ jobs:
         with:
           node-version: 20
 
+      - name: Install Playwright Browsers
+        uses: microsoft/playwright-github-action@v2
+        
       - name: Install Dependencies
         run: npm install
 
