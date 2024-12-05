@@ -3,7 +3,8 @@ name: CI/CD Workflow
 on:
   push:
     branches:
-      - ['dev','main'] # Kör vid push till dev (skriv '**' för att det ska vara till alla branches)
+      - dev
+      - main # Kör vid push till dev (skriv '**' för att det ska vara till alla branches)
 
 jobs:
   unit-test:
