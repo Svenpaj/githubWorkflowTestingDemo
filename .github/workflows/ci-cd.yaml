@@ -9,7 +9,7 @@ on:
       - main # Kör tester på PR till main
 
 jobs:
-  test:
+  unit-test:
     name: Run unit tests
     runs-on: ubuntu-latest
     steps:
@@ -27,10 +27,29 @@ jobs:
       - name: Run Tests
         run: npm test
 
+  integration-test:
+    name: Run Integration Tests
+    runs-on: ubuntu-latest
+    needs: unit-test # Kör endast om unit-test-jobbet lyckas
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Run Tests
+        run: npm run test-integration
+
   ui-test:
     name: Run UI Tests
     runs-on: ubuntu-latest
-    needs: test # Kör endast om test-jobbet lyckas
+    needs: [unit-test, integration-test] # Kör endast om test-jobbet lyckas
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
