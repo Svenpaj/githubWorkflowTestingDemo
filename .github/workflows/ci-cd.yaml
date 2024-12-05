@@ -75,7 +75,9 @@ jobs:
     name: Deploy to Server
     runs-on: ubuntu-latest
     needs: [unit-test, integration-test, ui-test] # Kör endast om tidigare jobb lyckas
-    if: github.ref == 'refs/heads/main' && github.event_name == 'push' # Kör endast på merge till main
+    environment:
+      name: production
+    if: github.ref == 'refs/heads/main' # Kör endast på merge till main
     steps:
       - name: Deploy Application
         uses: appleboy/ssh-action@master
