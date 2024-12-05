@@ -85,7 +85,7 @@ jobs:
           password: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
           script: |
-            cd ~ci-de-workflow-demo/githubWorkflowTestingDemo
+            cd srv/www/ci-de-workflow-demo/githubWorkflowTestingDemo
             git pull
 
 
