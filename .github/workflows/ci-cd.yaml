@@ -46,8 +46,8 @@ jobs:
       - name: Install Playwright
         run: npx playwright install
 
-      # - name: Install System Dependencies
-      #   run: npx playwright install-deps
+      - name: Install System Dependencies
+        run: npx playwright install-deps
 
       - name: Run Tests
         run: npm run test-ui
