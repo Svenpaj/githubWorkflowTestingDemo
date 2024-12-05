@@ -3,7 +3,7 @@ name: CI/CD Workflow
 on:
   push:
     branches:
-      - '**' # Kör vid push till alla branches
+      - 'dev' # Kör vid push till alla branches
   pull_request:
     branches:
       - main # Kör tester på PR till main
@@ -71,19 +71,23 @@ jobs:
       - name: Run Tests
         run: npm run test-ui
 
-  # deploy:
-  #   name: Deploy to Server
-  #   runs-on: ubuntu-latest
-  #   needs: [unit-test, integration-test, ui-test] # Kör endast om tidigare jobb lyckas
-  #   environment:
-  #     name: production 
-  #   if: github.ref == 'refs/heads/main' && github.event_name == 'push' # Kör endast på merge till main
-  #   steps:
-  #     - name: Checkout Code
-  #       uses: actions/checkout@v3
+  deploy:
+    name: Deploy to Server
+    runs-on: ubuntu-latest
+    needs: [unit-test, integration-test, ui-test] # Kör endast om tidigare jobb lyckas
+    environment:
+      name: production 
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push' # Kör endast på merge till main
+    steps:
+      - name: Deploy Application
+        run: echo "Deploying Application to Server"
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          port: ${{ secrets.PORT }}
+          script: |
+            cd ~ci-de-workflow-demo/githubWorkflowTestingDemo
+            git pull
 
-  #     - name: Deploy Application
-  #       run: |
-  #         echo "Deploying application..."
-  #         # Lägg till din deploy-logik här, t.ex.:
-  #         ssh user@your-server "cd /path/to/app && git pull && npm install && npm run build && pm2 restart all"
