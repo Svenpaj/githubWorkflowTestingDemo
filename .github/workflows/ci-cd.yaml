@@ -10,7 +10,7 @@ on:
 
 jobs:
   unit-test:
-    name: Run unit tests
+    name: Run unit Tests
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
@@ -25,7 +25,7 @@ jobs:
         run: npm install
 
       - name: Run Tests
-        run: npm test
+        run: npm test-unit
 
   integration-test:
     name: Run Integration Tests
