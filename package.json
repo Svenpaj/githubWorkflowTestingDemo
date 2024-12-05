@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "description": "a demo about testflow and deployments",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+   "test": "npx playwright test tests/mathTest.spec.js",
+   "test-ui": "npx playwright test tests/uiTest.spec.ts"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
