@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
    "test": "npx playwright test tests/mathTest.spec.js",
-   "test-ui": "npx playwright test tests/uiTest.spec.ts --headless=true"
+   "test-ui": "npx playwright test tests/uiTest.spec.ts"
   },
   "keywords": [],
   "author": "",
