@@ -24,9 +24,6 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
-      - name: Install Playwright browsers
-        run: npm install playwright
-
       - name: Run Tests
         run: npm test
 
@@ -45,6 +42,9 @@ jobs:
 
       - name: Install Dependencies
         run: npm install
+
+      - name: Install Playwright browsers
+        run: npm install playwright
 
       - name: Run Tests
         run: npm run test-ui
