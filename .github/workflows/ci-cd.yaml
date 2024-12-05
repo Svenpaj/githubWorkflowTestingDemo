@@ -80,7 +80,6 @@ jobs:
     if: github.ref == 'refs/heads/main' && github.event_name == 'push' # Kör endast på merge till main
     steps:
       - name: Deploy Application
-        run: echo "Deploying Application to Server"
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.HOST }}
