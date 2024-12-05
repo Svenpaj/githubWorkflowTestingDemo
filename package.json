@@ -3,10 +3,11 @@
   "version": "1.0.0",
   "description": "a demo about testflow and deployments",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-   "test-unit": "npx playwright test tests/mathTest.spec.js",
-   "test-integration": "npx playwright test tests/calculatorTest.spec.js",
-   "test-ui": "npx playwright test tests/uiTest.spec.ts"
+    "test-unit": "npx playwright test tests/mathTest.spec.js",
+    "test-integration": "npx playwright test tests/calculatorTest.spec.js",
+    "test-ui": "npx playwright test tests/uiTest.spec.ts"
   },
   "keywords": [],
   "author": "",
@@ -14,5 +15,8 @@
   "devDependencies": {
     "@playwright/test": "^1.49.0",
     "@types/node": "^22.10.1"
+  },
+  "dependencies": {
+    "express": "^4.21.1"
   }
 }
