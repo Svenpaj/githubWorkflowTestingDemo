@@ -19,7 +19,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 20
+          node-version: 18
 
       - name: Install Dependencies
         run: npm install
@@ -38,13 +38,13 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 20
-
-      - name: Install System Dependencies
-        run: npx playwright install-deps
+          node-version: 18
 
       - name: Install Dependencies
         run: npm install
+
+      - name: Install System Dependencies
+        run: npx playwright install-deps
 
       - name: Run Tests
         run: npm run test-ui
